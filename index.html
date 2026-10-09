@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Disaster Tweet Classification</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 60px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: vertical;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #1f6feb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1557b0;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f0f4f8;
+            text-align: center;
+        }
+
+        .result h2 {
+            margin-top: 0;
+        }
+
+        .tweet-preview {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fafafa;
+            border-radius: 8px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Disaster Tweet Classification</h1>
+
+        <p class="subtitle">
+            Enter a tweet to determine whether it describes a real disaster.
+        </p>
+
+        <form method="POST">
+
+            <textarea
+                name="tweet"
+                placeholder="Enter a tweet here..."
+                required>{{ tweet }}</textarea>
+
+            <button type="submit">
+                Classify Tweet
+            </button>
+
+        </form>
+
+        {% if prediction is not none %}
+
+        <div class="result">
+
+            <h2>
+                Prediction:
+                {% if prediction == 1 %}
+                    Disaster
+                {% else %}
+                    Non-Disaster
+                {% endif %}
+            </h2>
+
+            <p>
+                Disaster Probability:
+                <strong>{{ "%.2f"|format(probability * 100) }}%</strong>
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
