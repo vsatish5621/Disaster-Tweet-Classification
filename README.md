@@ -255,3 +255,31 @@ Trained Naive Bayes Model
 Prediction + Disaster Probability
     ↓
 Web Interface
+
+
+## 🚀 Live Application
+
+**Try the Disaster Tweet Classification application here:**
+
+🔗 https://disaster-tweet-classification-baylfnxfscsp4xt4dmffxa.streamlit.app/
+
+The application allows users to enter a tweet and predict whether it
+represents a real disaster or a non-disaster message.
+
+### Deployment Details
+- **Framework:** Streamlit
+- **Hosting Platform:** Streamlit Community Cloud
+- **Programming Language:** Python 3.13
+- **Machine Learning Model:** Tuned Multinomial Naive Bayes
+- **Text Representation:** TF-IDF
+- **Additional Features:** Tweet length, hashtag presence, and mention presence
+- **Model Artifacts:** `disaster_tweet_model.pkl`, `tfidf_vectorizer.pkl`
+
+### Live Application Validation
+
+| Test Case | Prediction | Confidence |
+|---|---|---:|
+| Flood and evacuation tweet | Disaster Tweet | 93.14% |
+| Metaphorical cooking disaster tweet | Non-Disaster Tweet | 79.69% |
+
+Both test cases were successfully validated using the deployed application.
